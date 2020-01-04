@@ -34,4 +34,4 @@ public class MinTest {
                 is(2)
         );
     }
-}
+} //
