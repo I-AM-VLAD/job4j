@@ -7,16 +7,16 @@ public class Battery {
         this.load = valueLoad;
     }
 
-    public void exchange(Battery another, int difference) {
-        another.load = another.load + difference;
-        this.load = this.load - difference;
+    public void exchange(Battery another) {
+        another.load = another.load + this.load;
+        this.load = 0;
     }
 
     public static void main(String[] args) {
         Battery first = new Battery(10);
         Battery second = new Battery(15);
         System.out.println("first : " + first.load + ". second : " + second.load);
-        first.exchange(second, 5);
+        first.exchange(second);
         System.out.println("first : " + first.load + ". second : " + second.load);
     }
 }
