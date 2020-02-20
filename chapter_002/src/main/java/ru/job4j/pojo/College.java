@@ -10,3 +10,4 @@ public class College {
         System.out.println(student.getFullName() + student.getGroup() + student.getReceiptDate());
     }
 }
+
