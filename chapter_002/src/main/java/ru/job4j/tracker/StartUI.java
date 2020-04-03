@@ -1,10 +1,9 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
 
 public class StartUI {
 
-    public void init(Scanner scanner, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
 
         // ЦИКЛ ДЛЯ ВЫБОРА ПУНКТА МЕНЮ
         boolean run = true;
@@ -13,13 +12,13 @@ public class StartUI {
 
             // считываем выбор пользователя
             System.out.print("Select: ");
-            int select = Integer.valueOf(scanner.nextLine());
+            int select = input.askInt("");
 
             // если выбор 0
             if (select == 0) {
                 System.out.println("=== Add new Item ====");
                 System.out.print("Enter name: ");
-                String name = scanner.nextLine();
+                String name = input.askStr("");
                 Item item = new Item(name);
                 tracker.add(item);
             }
@@ -57,7 +56,7 @@ public class StartUI {
 
                 // вводим ID
                 System.out.println("Введите ID");
-                String in = scanner.nextLine();
+                String in = input.askStr("");
                 Item resultID = tracker.findById(in);
 
                 // проверка
@@ -74,7 +73,7 @@ public class StartUI {
 
                 // вводим NAME
                 System.out.println("Введите name");
-                String in = scanner.nextLine();
+                String in = input.askStr("");
 
                 Item[] resultNames = tracker.findByName(in);
 
@@ -102,7 +101,7 @@ public class StartUI {
         }
     }
 
-
+    // МЕНЮ
     private void showMenu() {
         System.out.println("MENU.");
         System.out.println("0. Add new Item");
@@ -114,11 +113,12 @@ public class StartUI {
         System.out.println("6. Exit Program");
     }
 
-
+    //
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+
+        new StartUI().init(input, tracker);
     }
 }
 
