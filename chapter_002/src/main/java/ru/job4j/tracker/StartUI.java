@@ -3,6 +3,72 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
+    public static void addNewItem(Input input, Tracker tracker) {
+        System.out.println("=== Add new Item ====");
+        System.out.print("Enter name: ");
+        String name = input.askStr("");
+        Item item = new Item(name);
+        tracker.add(item);
+    }
+    public static void showAllItems(Tracker tracker) {
+        System.out.println("=== Show all items ====");
+
+        // массив заявок
+        Item[] result = tracker.findAll();
+
+        // ПРОВЕРКА
+        /*"Если заявок нет"*/
+        //////////////////////////////////////
+
+        // вывод массива заявок на экран
+        for(int i = 0; i < result.length; i++){
+            System.out.print(result[i].getName() + " ");
+        }
+        System.out.println();
+    }
+    public static void editItem() {
+        System.out.println("Такой функции пока не существует!");
+    }
+    public static void deleteItem() {
+        System.out.println("Такой функции пока не существует!");
+    }
+    public static void findItemById(Input input, Tracker tracker) {
+        System.out.println("=== Find item by Id ====");
+
+        // вводим ID
+        System.out.println("Введите ID");
+        String in = input.askStr("");
+        Item resultID = tracker.findById(in);
+
+        // проверка
+        if(resultID == null) {
+            System.out.println("Элемента с таким ID не существует");
+        } else {
+            System.out.println(resultID.getName());
+        }
+    }
+    public static void findItemsByName(Input input, Tracker tracker) {
+        System.out.println("=== Find items by name ====");
+
+        // вводим NAME
+        System.out.println("Введите name");
+        String in = input.askStr("");
+
+        Item[] resultNames = tracker.findByName(in);
+
+        // ПРОВЕРКА
+        /*"Элемента с таким name не существует"*/
+        //////////////////////////////////////
+
+        // вывод массива имен на экран
+        for (int i = 0; i < resultNames.length; i++) {
+            System.out.print(resultNames[i].getName() + " ");
+        }
+
+        System.out.println();
+    }
+
+    // ВЫБОР ПУНКТА МЕНЮ
     public void init(Input input, Tracker tracker) {
 
         // ЦИКЛ ДЛЯ ВЫБОРА ПУНКТА МЕНЮ
@@ -16,77 +82,32 @@ public class StartUI {
 
             // если выбор 0
             if (select == 0) {
-                System.out.println("=== Add new Item ====");
-                System.out.print("Enter name: ");
-                String name = input.askStr("");
-                Item item = new Item(name);
-                tracker.add(item);
+                StartUI.addNewItem(input, tracker);
             }
 
             // если выбор 1
             else if (select == 1) {
-                System.out.println("=== Show all items ====");
-
-                // массив заявок
-                Item[] result = tracker.findAll();
-
-                // ПРОВЕРКА
-                /*"Если заявок нет"*/
-                //////////////////////////////////////
-
-                // вывод массива заявок на экран
-                for(int i = 0; i < result.length; i++){
-                    System.out.print(result[i].getName() + " ");
-                }
-                System.out.println();
+                StartUI.showAllItems(tracker);
             }
 
             // если выбор 2
             else if (select == 2) {
-                System.out.println("Такой функции пока не существует!");
+                StartUI.editItem();
             }
+
             // если выбор 3
             else if (select == 3) {
-                System.out.println("Такой функции пока не существует!");
+                StartUI.deleteItem();
             }
 
             // если выбор 4
             else if (select == 4) {
-                System.out.println("=== Find item by Id ====");
-
-                // вводим ID
-                System.out.println("Введите ID");
-                String in = input.askStr("");
-                Item resultID = tracker.findById(in);
-
-                // проверка
-                if(resultID == null) {
-                    System.out.println("Элемента с таким ID не существует");
-                } else {
-                    System.out.println(resultID.getName());
-                }
+                StartUI.findItemById(input, tracker);
             }
 
             // если выбор 5
             else if (select == 5) {
-                System.out.println("=== Find items by name ====");
-
-                // вводим NAME
-                System.out.println("Введите name");
-                String in = input.askStr("");
-
-                Item[] resultNames = tracker.findByName(in);
-
-                // ПРОВЕРКА
-                    /*"Элемента с таким name не существует"*/
-                //////////////////////////////////////
-
-                // вывод массива имен на экран
-                    for (int i = 0; i < resultNames.length; i++) {
-                        System.out.print(resultNames[i].getName() + " ");
-                    }
-
-                System.out.println();
+                StartUI.findItemsByName(input, tracker);
             }
 
             // если выбор 6
@@ -113,7 +134,7 @@ public class StartUI {
         System.out.println("6. Exit Program");
     }
 
-    //
+    // ГЛАВНАЯ ФУНКЦИЯ
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
