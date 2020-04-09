@@ -8,6 +8,47 @@ public class Tracker {
     private int position = 0;
     private final Item[] items = new Item[100];
 
+
+    public boolean replace(String id, Item item) {
+        int index = indexOf(id);
+          if( index == -1) {
+              return false;
+          } else {
+            items[index] = item;
+            return true;
+        }
+    }
+
+    public boolean delete(String id) {
+        int index = indexOf(id);
+        if( index == -1) {
+            return false;
+        } else {
+            items[index] = null;
+            System.arraycopy(items,index+1,items,index, (items.length-1) - (index+1));
+
+            return true;
+        }
+
+    }
+
+    private int indexOf(String id) {
+
+        int result = -1;
+        for (int i = 0; i < position; i++) {
+
+            if (items[i].getId().equals(id)) {
+
+                result = i;
+
+                break;
+
+            }
+        }
+        return result;
+    }
+
+
     // ГЕНЕРИРУЕМ уникальный ключ
     private String generateId() {
         Random rm = new Random();
@@ -22,13 +63,11 @@ public class Tracker {
 
     // получение заявки по ID
     public Item findById(String id) {
-        for (int index = 0; index < items.length; index++) {
-            Item temp = items[index];
-            if((temp != null) && (temp.getId().equals(id))) {
-                return temp;
-            }
-        }
-        return null;
+
+        int index = indexOf(id);
+
+        return index != -1 ? items[index] : null;
+
     }
 
     // получение списка ВСЕХ заявок

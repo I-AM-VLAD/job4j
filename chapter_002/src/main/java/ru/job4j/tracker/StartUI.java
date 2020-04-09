@@ -10,6 +10,7 @@ public class StartUI {
         Item item = new Item(name);
         tracker.add(item);
     }
+
     public static void showAllItems(Tracker tracker) {
         System.out.println("=== Show all items ====");
 
@@ -20,18 +21,34 @@ public class StartUI {
         /*"Если заявок нет"*/
         //////////////////////////////////////
 
-        // вывод массива заявок на экран
+        // вывод всех имен
         for(int i = 0; i < result.length; i++){
             System.out.print(result[i].getName() + " ");
         }
         System.out.println();
+
+        // вывод всех ID
+        for(int i = 0; i < result.length; i++){
+            System.out.print(result[i].getId() + " ");
+        }
+        System.out.println();
     }
-    public static void editItem() {
-        System.out.println("Такой функции пока не существует!");
+
+    public static void editItem(Input input, Tracker tracker) {
+        System.out.println(" === Update item ====");
+        String id = input.askStr("Enter id:");
+        String name = input.askStr("Enter a new name of item: ");
+        Item item = new Item(name);
+        item.setId(id);
+        tracker.replace(id, item);
     }
-    public static void deleteItem() {
-        System.out.println("Такой функции пока не существует!");
+    public static void deleteItem(Input input, Tracker tracker) {
+        System.out.println("=== Delete an Item ====");
+        System.out.print("Enter id: ");
+        String id = input.askStr("");
+        tracker.delete(id);
     }
+
     public static void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
 
@@ -92,12 +109,12 @@ public class StartUI {
 
             // если выбор 2
             else if (select == 2) {
-                StartUI.editItem();
+                StartUI.editItem(input, tracker);
             }
 
             // если выбор 3
             else if (select == 3) {
-                StartUI.deleteItem();
+                StartUI.deleteItem(input, tracker);
             }
 
             // если выбор 4
