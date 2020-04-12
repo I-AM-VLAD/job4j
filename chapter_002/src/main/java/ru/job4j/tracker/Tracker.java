@@ -36,13 +36,14 @@ public class Tracker {
 
         int result = -1;
         for (int i = 0; i < position; i++) {
+            if (items[i] != null) {
+                if (items[i].getId().equals(id)) {
 
-            if (items[i].getId().equals(id)) {
+                    result = i;
 
-                result = i;
+                    break;
 
-                break;
-
+                }
             }
         }
         return result;
