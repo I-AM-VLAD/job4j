@@ -10,6 +10,7 @@ public class Triangle implements Shape {
         pic.add("   +++++   ");
         pic.add(" +++++++++ ");
         pic.add("+++++++++++");
+
         return pic.toString();
     }
 }
