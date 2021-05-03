@@ -1,27 +1,19 @@
 package ru.job4j.chapter_006.serialization;
 
-import javax.xml.bind.annotation.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-@XmlRootElement(name = "library")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Library {
-    @XmlAttribute
     private boolean webSite;
-
-    @XmlAttribute
     private int visitors;
-
     private Book book;
-
-    @XmlAttribute
     private String director;
-
-    @XmlElementWrapper(name = "employees")
-    @XmlElement(name = "employee")
     private String[] employees;
 
-    public Library() {}
     public Library(boolean webSite, int visitors, Book book, String director, String... employees) {
         this.webSite = webSite;
         this.visitors = visitors;
@@ -39,5 +31,43 @@ public class Library {
                 + ", director=" + director
                 + ", employees=" + Arrays.toString(employees)
                 + '}';
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public int getVisitors() {
+        return visitors;
+    }
+
+    public boolean isWebSite() {
+        return webSite;
+    }
+
+    public static void main(String[] args) {
+        /* JSONObject из json-строки */
+        JSONObject jsonBook = new JSONObject("{\"author\":\"Pushkin\"}");
+
+        /* JSONArray из ArrayList */
+        List<String> list = new ArrayList<>();
+        list.add("Vlad");
+        list.add("Anna");
+        JSONArray jsonEmployees = new JSONArray(list);
+
+        /* JSONObject напрямую методом put */
+        final Library library = new Library(true, 35, new Book("Pushkin"), "Vlad", "Anna", "Pavel");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("webSite", library.isWebSite());
+        jsonObject.put("visitors", library.getVisitors());
+        jsonObject.put("director", library.getDirector());
+        jsonObject.put("book", jsonBook);
+        jsonObject.put("employees", jsonEmployees);
+
+        /* Выведем результат в консоль */
+        System.out.println(jsonObject.toString());
+
+        /* Преобразуем объект library в json-строку */
+        System.out.println(new JSONObject(library).toString());
     }
 }
