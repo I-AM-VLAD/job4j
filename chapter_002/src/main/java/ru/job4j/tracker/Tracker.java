@@ -8,12 +8,11 @@ public class Tracker {
     private int position = 0;
     private final Item[] items = new Item[100];
 
-
     public boolean replace(String id, Item item) {
         int index = indexOf(id);
-          if( index == -1) {
-              return false;
-          } else {
+        if( index == -1) {
+            return false;
+        } else {
             items[index] = item;
             return true;
         }
@@ -38,17 +37,13 @@ public class Tracker {
         for (int i = 0; i < position; i++) {
             if (items[i] != null) {
                 if (items[i].getId().equals(id)) {
-
                     result = i;
-
                     break;
-
                 }
             }
         }
         return result;
     }
-
 
     // ГЕНЕРИРУЕМ уникальный ключ
     private String generateId() {
@@ -68,8 +63,8 @@ public class Tracker {
         int index = indexOf(id);
 
         return index != -1 ? items[index] : null;
-
     }
+
 
     // получение списка ВСЕХ заявок
     public Item[] findAll() {

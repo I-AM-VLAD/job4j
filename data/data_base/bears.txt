@@ -1,0 +1,10 @@
+create table bears(
+	id serial primary key,
+	name varchar(255),
+	area text,
+	weight int
+);
+insert into bears(name, area, weight) values ('Гризли', 'США', 350); 
+select * from bears;
+update bears set name = 'Гризззли';
+delete from bears;

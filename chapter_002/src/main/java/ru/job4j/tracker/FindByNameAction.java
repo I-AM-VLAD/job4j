@@ -9,24 +9,10 @@ public class FindByNameAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
 
-        System.out.println("=== Find items by name ====");
-
-        // вводим NAME
-        System.out.println("Введите name");
-        String in = input.askStr("");
-
-        Item[] resultNames = tracker.findByName(in);
-
-        // ПРОВЕРКА
-        /*"Элемента с таким name не существует"*/
-        //////////////////////////////////////
-
-        // вывод массива имен на экран
-        for (int i = 0; i < resultNames.length; i++) {
-            System.out.print(resultNames[i].getName() + " ");
+        String in = input.askStr("Введите name ");
+        for (Item item : tracker.findByName(in)) {
+            System.out.println(String.format("%s %s", item.getId(), item.getName()));
         }
-
-        System.out.println();
 
         return true;
     }
