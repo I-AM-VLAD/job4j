@@ -116,6 +116,7 @@ public class TableEditor implements AutoCloseable {
         tableEditor.createTable("new_table");
         tableEditor.createTable("new_table1");
         tableEditor.addColumn("new_table", "name", "text");
+
         System.out.println(getTableScheme(tableEditor.connection, "new_table"));
     }
 
