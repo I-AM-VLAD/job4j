@@ -21,9 +21,17 @@ public class ImportDB {
 
     public List<User> load() throws IOException {
         List<User> users = new ArrayList<>();
+
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-             rd.lines().forEach(ln -> users.add(new User(ln.split(";")[0], ln.split(";")[1])));
+            rd.lines().forEach(ln -> {
+                String [] temp = ln.split(";");
+                if(temp.length != 2) {
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                users.add(new User(temp [0], temp[1]));
+            });
         }
+
         return users;
     }
 
@@ -56,10 +64,10 @@ public class ImportDB {
 
     public static void main(String[] args) throws Exception {
         Properties cfg = new Properties();
-        try (FileInputStream in = new FileInputStream("C:\\projects\\job4j\\chapter_002\\src\\main\\java\\ru\\job4j\\chapter_007\\jdbc\\app.properties")) {
+        try (FileInputStream in = new FileInputStream("./chapter_002/data/app1.properties")) {
             cfg.load(in);
         }
-        ImportDB db = new ImportDB(cfg, "C:\\projects\\job4j\\chapter_002\\src\\main\\java\\ru\\job4j\\chapter_007\\jdbc\\dump.txt");
+        ImportDB db = new ImportDB(cfg, "./chapter_002/data/dump.txt");
         db.save(db.load());
     }
 }
