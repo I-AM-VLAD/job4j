@@ -24,9 +24,9 @@ public class ImportDB {
 
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
             rd.lines().forEach(ln -> {
-                String [] temp = ln.split(";");
-                if(temp.length != 2) {
-                    throw new ArrayIndexOutOfBoundsException();
+                String [] temp = ln.split(";", 2);
+                if(temp[0].isEmpty() || temp[1].isEmpty()) {
+                    throw new IllegalArgumentException();
                 }
                 users.add(new User(temp [0], temp[1]));
             });
