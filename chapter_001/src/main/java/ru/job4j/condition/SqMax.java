@@ -5,7 +5,6 @@ public class SqMax
     public static int max (int first, int second, int third, int forth)
     {
         int result = forth;
-        /////////////////////////////////////////////
         if (first > second)
         {
             if (first > third)
@@ -16,7 +15,6 @@ public class SqMax
                 }
             }
         }
-        /////////////////////////////////////////////
         else if (second > third)
         {
             if (second > forth)
@@ -24,12 +22,10 @@ public class SqMax
                 result = second;
             }
         }
-        /////////////////////////////////////////////
         else if (third > forth)
         {
             result = third;
         }
-        /////////////////////////////////////////////
         return result;
     }
 }

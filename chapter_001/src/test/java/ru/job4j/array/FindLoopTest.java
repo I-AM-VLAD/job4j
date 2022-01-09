@@ -33,7 +33,6 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
-    //новые тест-методы из задания 5.5
     @Test
     public void whenFind3() {
         int[] input = new int[] {5, 2, 10, 2, 4};

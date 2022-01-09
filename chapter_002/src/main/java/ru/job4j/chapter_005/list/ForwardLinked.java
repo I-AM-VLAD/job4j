@@ -63,7 +63,7 @@ public class ForwardLinked<T> implements Iterable<T> {
         tail.next = null;
         return node;
     }
-    //для задания "перевернуть список"
+
     public void revert() {
         Node<T> headRevert = returnLastNode();
         Node<T> temp = headRevert;

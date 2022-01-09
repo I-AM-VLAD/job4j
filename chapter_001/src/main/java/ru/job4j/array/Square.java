@@ -8,7 +8,6 @@ public class Square {
             rst[i] = Math.pow(number, 2);
             ++number;
         }
-        // заполнить массив через цикл элементами от 1 до bound возведенными в квадрат
         return rst;
     }
 }

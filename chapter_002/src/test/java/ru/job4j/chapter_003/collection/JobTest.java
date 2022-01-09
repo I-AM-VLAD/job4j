@@ -10,12 +10,10 @@ public class JobTest {
     @Test
     public void whenComparatorByDeskNameAndDeskPriority() {
         Comparator<Job> cmpDeskNameDeskPriority = new JobDescByName().thenComparing(new JobDescByPriority());
-
         int rsl = cmpDeskNameDeskPriority.compare(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
         );
-
         assertThat(rsl, lessThan(0));
     }
     @Test
@@ -29,9 +27,6 @@ public class JobTest {
 
         assertThat(rsl, lessThan(5));
     }
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
     @Test
     public void whenComparatorByName() {
 
@@ -43,7 +38,7 @@ public class JobTest {
 
         assertThat(rsl, lessThan(5));
     }
-    //////////////////////////////////////////////////////////////////////////////////
+
     @Test
     public void whenComparatorByPriority() {
 
@@ -55,7 +50,7 @@ public class JobTest {
 
         assertThat(rsl, lessThan(5));
     }
-    ////////////////////////////////////////////////////////////////////////////
+
     @Test
     public void whenComparatorByDeskName() {
 
@@ -67,7 +62,7 @@ public class JobTest {
 
         assertThat(rsl, lessThan(5));
     }
-    //////////////////////////////////////////////////////////////////////////////////
+
     @Test
     public void whenComparatorByDeskPriority() {
 

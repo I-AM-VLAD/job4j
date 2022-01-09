@@ -11,12 +11,10 @@ public class FindByIdAction implements UserAction {
 
         System.out.println("=== Find item by Id ====");
 
-        // вводим ID
         System.out.println("Введите ID");
         String in = input.askStr("");
         Item resultID = tracker.findById(in);
 
-        // проверка
         if(resultID == null) {
             System.out.println("Элемента с таким ID не существует");
         } else {

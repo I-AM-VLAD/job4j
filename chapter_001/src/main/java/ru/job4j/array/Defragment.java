@@ -5,7 +5,6 @@ public class Defragment {
         for (int index = 0; index < array.length; index++) {
             String varForNull = array[index];
             int newIndex = index + 1;
-            // чтобы не выйти за пределы массива
             if ((index == array.length - 1) && array[index] == null) {
                 break;
             }

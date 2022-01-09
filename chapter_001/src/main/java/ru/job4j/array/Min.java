@@ -8,4 +8,4 @@ public class Min {
                 min = array[i];
         return min;
     }
-}    //
+}

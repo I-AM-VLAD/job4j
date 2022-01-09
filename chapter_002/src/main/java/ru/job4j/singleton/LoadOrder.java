@@ -31,9 +31,7 @@ public class LoadOrder {
         private static final LoadOrder INSTANCE = new LoadOrder("static inner field");
     }
 
-
     public static void main(String[] args) {
-        //LoadOrder order = new LoadOrder("main");
     }
 }
 

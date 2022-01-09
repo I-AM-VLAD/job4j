@@ -1,13 +1,6 @@
 package ru.job4j.tracker;
 
-
 public class StartUI {
-
-
-
-
-
-    // ВЫБОР ПУНКТА МЕНЮ
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
@@ -18,8 +11,6 @@ public class StartUI {
         }
     }
 
-
-    // МЕНЮ
     private void showMenu(UserAction[] actions) {
         System.out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
@@ -27,8 +18,6 @@ public class StartUI {
         }
     }
 
-
-    // ГЛАВНАЯ ФУНКЦИЯ
     public static void main(String[] args) {
 
         Input input = new ConsoleInput();
@@ -39,10 +28,8 @@ public class StartUI {
                 new CreateAction(),
                 new FindAllAction(),
                 new ReplaceAction(),
-
                 new DeleteAction(),
                 new FindByIdAction(),
-
                 new FindByNameAction(),
         };
         new StartUI().init(validate, tracker, actions);

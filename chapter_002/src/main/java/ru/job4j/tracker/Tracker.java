@@ -45,32 +45,24 @@ public class Tracker {
         return result;
     }
 
-    // ГЕНЕРИРУЕМ уникальный ключ
     private String generateId() {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
-    // ДОБАВЛЕНИЕ заявок
+
     public Item add(Item item) {
         item.setId(this.generateId());
         items[this.position++] = item;
         return item;
     }
 
-    // получение заявки по ID
     public Item findById(String id) {
-
         int index = indexOf(id);
-
         return index != -1 ? items[index] : null;
     }
 
-
-    // получение списка ВСЕХ заявок
     public Item[] findAll() {
-
         Item[] itemsWithoutNull = new Item[items.length];
-
         int size = 0;
         for (int index = 0; index < items.length; index++) {
             Item temp = items[index];
@@ -79,16 +71,12 @@ public class Tracker {
                 size++;
             }
         }
-
         itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-
         return itemsWithoutNull;
     }
 
-    // получение списка по ИМЕНИ
     public Item[] findByName(String name) {
         Item[] nameS = new Item[items.length];
-        ////////////////////////////////////
         int size = 0;
         for (int index = 0; index < items.length; index++) {
             Item temp = items[index];
@@ -99,7 +87,6 @@ public class Tracker {
                 }
             }
         }
-        ///////////////////////////////////
         nameS = Arrays.copyOf(nameS, size);
         return nameS;
     }

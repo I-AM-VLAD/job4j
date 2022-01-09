@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
 
 public class ItemTest {
-    ////////////////////////////////////////////////////////////////////////////
+
     @Test
     public void whenComparableById() {
 
@@ -18,7 +18,6 @@ public class ItemTest {
         assertThat(rsl, lessThan(5));
     }
 
-    //////////////////////////////////////////////////////////////////////////////////
     @Test
     public void whenComparatorByName() {
 
@@ -30,7 +29,7 @@ public class ItemTest {
 
         assertThat(rsl, lessThan(15));
     }
-    ////////////////////////////////////////////////////////////////////////////
+
     @Test
     public void whenComparatorByDescName() {
 
@@ -42,6 +41,5 @@ public class ItemTest {
 
         assertThat(rsl, lessThan(5));
     }
-    //////////////////////////////////////////////////////////////////////////////////
 }
 
